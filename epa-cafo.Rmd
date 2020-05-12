@@ -1,0 +1,27 @@
+---
+title: "epa-cafo"
+author: "Joe Wertz"
+date: "5/12/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+library("dplyr")
+library("ggplot2")
+library("htmltools")
+library("sf")
+library("stringr")
+library("tidyr")
+library("leaflet")
+library("tigris")
+library("rgdal")
+library("raster")
+library("rgeos")
+library("conflicted")
+library("sf")
+library("readxl")
+library("janitor")
+library("stringr")
