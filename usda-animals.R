@@ -1,13 +1,12 @@
 # load packages -----------------------------------------------------------
+
 library("tidyverse")
 library("janitor")
 library("tidyUSDA")
+library("keyring")
 
 # USDA key ----------------------------------------------------------------
-# Suggest keeping keys outside the project when possible.
-# R way to do this seems to be to store in the Keyring like:
-# key <- keyring::key_get("tidyusda")
-key <- "402BA5AF-8117-3EBC-89F8-837F070C47C1"
+key <- keyring::key_get("USDA")
 
 # years -------------------------------------------------------------------
 
