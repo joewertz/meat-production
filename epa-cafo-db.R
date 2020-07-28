@@ -6,6 +6,7 @@ library("stringr")
 library("sf")
 library("tigris")
 library("leaflet")
+library("BAMMtools")
 
 
 # import data -------------------------------------------------------------
@@ -14,9 +15,14 @@ cafos_shp <- st_read("C:/data/meat-production/CAFO_Density/CAFOs_per_County.shp"
   clean_names()
 
 
+# classify the data for jenks ---------------------------------------------
+
+jenks_breaks <- getJenksBreaks(cafos_shp$caf_os, 7)
+
 # plot the data -----------------------------------------------------------
 
-pal <- colorBin("Blues", domain = cafos_shp$caf_os, 7)
+bins <- c(jenks_breaks)
+pal <- colorBin("Blues", domain = cafos_shp$caf_os, bins = bins)
 
 cafos_shp %>% 
   leaflet() %>%
