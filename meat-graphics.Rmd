@@ -1,0 +1,36 @@
+---
+title: "meat-graphics"
+author: "Joe Wertz"
+date: "8/18/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+``` {r nice_line_chart}
+all_meat_exports_92_19 %>%
+  ggplot(aes(x = time, 
+             y = value_us)) +
+  geom_line(color = "#F35D26", show.legend = FALSE, size = 1) +
+  scale_y_continuous(labels = comma) +
+  ggtitle("U.S. meat exports: 1992-2019") +
+  xlab("Year") + ylab("Sales in $") +
+  theme_minimal()
+ggsave("coral_test2.svg", width=10, height=4) # export an SVG
+
+```
+
+``` {r line chart with scaling $}
+all_meat_exports_92_19 %>%
+  ggplot(aes(x = time, 
+             y = value_us)) +
+  geom_line(color = "#F35D26", show.legend = FALSE, size = 1) +
+  scale_y_continuous(labels = unit_format(unit = "B", scale = 1e-9, prefix = "$")) +
+  xlab("Year") + ylab("Sales") +
+  theme_minimal()
+ggsave("C:/data/meat-production/meat_exports92-19.svg", width=10, height=4) # export an SVG
+
+```
